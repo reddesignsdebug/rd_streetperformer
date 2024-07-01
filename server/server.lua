@@ -32,7 +32,7 @@ RegisterServerEvent('streetPerformer:earnTips')
 AddEventHandler('streetPerformer:earnTips', function()
     local playerId = source
     if activePerformances[playerId] then
-        local tipAmount = math.random(10, 50) -- Random tip amount
+        local tipAmount = math.random(Config.MinTipAmount, Config.MaxTipAmount) -- Random tip amount
         TriggerClientEvent('streetPerformer:notify', playerId, 'You earned $' .. tipAmount .. ' in tips!')
         -- Add logic to give the player the tip amount, e.g., using your server's money system
     end
