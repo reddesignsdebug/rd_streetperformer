@@ -1,7 +1,7 @@
 local isPerforming = false
 local performanceCoords = nil
 
--- FUnction to start performing
+-- Function to start performing
 RegisterNetEvent('streetPerformer:startPerformance')
 AddEventHandler('streetPerformer:startPerformance', function(playerId, coords)
     if GetPlayerServerId(PlayerId()) == playerId then
@@ -9,10 +9,25 @@ AddEventHandler('streetPerformer:startPerformance', function(playerId, coords)
         performanceCoords = coords
         TriggerEvent('streetPerformer:notify', 'You started performing!')
 
+        -- Trigger emote (assuming 'WORLD_HUMAN_MUSICIAN' is the desired emote)
+        TaskStartScenarioInPlace(PlayerPedId(), 'WORLD_HUMAN_MUSICIAN', 0, true)
+
         Citizen.CreateThread(function()
             while isPerforming do
                 Citizen.Wait(10000) -- Every 10 seconds
                 TriggerServerEvent('streetPerformer:earnTips')
+            end
+        end)
+
+        -- Key press detection for stopping performance
+        Citizen.CreateThread(function()
+            while isPerforming do
+                Citizen.Wait(0)
+                if IsControlJustPressed(0, 73) then -- 'X' key
+                    ClearPedTasksImmediately(PlayerPedId())
+                    TriggerServerEvent('streetPerformer:stopPerformance')
+                    TriggerEvent('streetPerformer:notify', 'You stopped performing!')
+                end
             end
         end)
     else
@@ -29,6 +44,7 @@ AddEventHandler('streetPerformer:stopPerformance', function(playerId)
         isPerforming = false
         performanceCoords = nil
         TriggerEvent('streetPerformer:notify', 'You stopped performing!')
+        ClearPedTasksImmediately(PlayerPedId()) -- Ensure the emote is stopped
     else
         -- Remove NPC audience
         local playerPed = GetPlayerPed(GetPlayerFromServerId(playerId))
