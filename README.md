@@ -1,19 +1,17 @@
 # rd_StreetPerformer Script for FiveM
 
-This script allows players to become street musicians, magicians, or entertainers, earning tips from NPCs and players. Performers can set up in designated areas across the map, showcasing their talents and attracting audiences.
+This script allows players to become street musicians, magicians, or entertainers, earning tips from NPCs and players. Showcasing their talents and attracting audiences.
 
 
 **Features:**
 
-1) Randomized Performance Locations: Use `/perform` to generate a random performance location on the map.
+1) Randomized Performance: Use `/perform` to generate a random performance and earn tips.
 
-2) Dynamic Performance: Once at the location, trigger an emote to start performing and earn tips automatically.
+2) Dynamic Performance: Once at used the command it triggers an emote to start performing and earn tips automatically.
 
-4) Cooldown System: Prevents spamming of performances with a configurable cooldown period.
+3) Customizable Settings: tip amounts to fit your server's requirements in the `config.lua`.
 
-5) Customizable Settings: Configure performance time, cooldown duration, tip amounts, and performance radius to fit your server's requirements in the `config.lua`.
-
-6) ESX and QBcore Support: Compatible with both QB and ESX setups for easy integration into different server environments.
+4) ESX and QBcore Support: Compatible with both QB and ESX setups for easy integration into different server environments.
 
 **Give your players the opportunity to immerse themselves in the world of street performance on FiveM!**
 
