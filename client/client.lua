@@ -22,7 +22,7 @@ AddEventHandler('streetPerformer:startPerformance', function(playerId, coords)
     end
 end)
 
--- Function to stop performing
+-- Function to stop Performing
 RegisterNetEvent('streetPerformer:stopPerformance')
 AddEventHandler('streetPerformer:stopPerformance', function(playerId)
     if GetPlayerServerId(PlayerId()) == playerId then
