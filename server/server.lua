@@ -80,7 +80,7 @@ RegisterServerEvent('streetPerformer:earnTips')
 AddEventHandler('streetPerformer:earnTips', function()
     local playerId = source
     if activePerformances[playerId] then
-        local tipAmount = math.random(Config.MinTipAmount, Config.MaxTipAmount) -- Use configured tip amounts
+        local tipAmount = math.random(Config.MinTipAmount, Config.MaxTipAmount) 
         playerTips[playerId] = (playerTips[playerId] or 0) + tipAmount
 
         -- Add money to player's account based on framework
